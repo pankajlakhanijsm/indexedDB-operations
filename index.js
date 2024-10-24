@@ -5,7 +5,7 @@ const indexedDBObject = (function () {
     const db = indexedDB.open("being", 2);
     db.addEventListener("error", (err) => {
       console.warn(err);
-      debugger;
+      console.log("test");
     });
     db.addEventListener("success", (event) => {
       console.log("db connected", event.target.result);

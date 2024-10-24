@@ -45,11 +45,11 @@ const updateData = (store) => {
 };
 
 const deleteData = (store) => {
-  const request = store.delete({ id: 1 });
+  const request = store.delete(2);
   request.onsuccess = (event) => {
-    console.log("data updated successfully");
+    console.log("data deleted successfully");
   };
   request.onerror = (e) => {
-    console.warn("error on data update", e.target.error);
+    console.warn("error on data delete", e.target.error);
   };
 };

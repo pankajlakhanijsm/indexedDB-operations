@@ -8,7 +8,9 @@ export const transactionFunction = ({ db, dbObject }) => {
   };
   const store = transactionObj.objectStore("human");
   // addData();
-  getData();
+  // getData(store);
+  // updateData(store);
+  deleteData(store)
 };
 
 const addData = (store) => {
@@ -25,9 +27,29 @@ const getData = (store) => {
   const request = store.getAll();
   request.onsuccess = (event) => {
     debugger;
-    console.log("data inserted successfully");
+    console.log("get data successfully", event.target.result);
   };
   request.onerror = (e) => {
-    console.warn("error on data insertion", e.target.error);
+    console.warn("error on data fetching", e.target.error);
+  };
+};
+
+const updateData = (store) => {
+  const request = store.put({ id: 1, data: { name: "pankaj" } });
+  request.onsuccess = (event) => {
+    console.log("data updated successfully", event.target.result);
+  };
+  request.onerror = (e) => {
+    console.warn("error on data update", e.target.error);
+  };
+};
+
+const deleteData = (store) => {
+  const request = store.delete({ id: 1 });
+  request.onsuccess = (event) => {
+    console.log("data updated successfully");
+  };
+  request.onerror = (e) => {
+    console.warn("error on data update", e.target.error);
   };
 };
